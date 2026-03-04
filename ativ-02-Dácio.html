@@ -1,0 +1,188 @@
+
+<!DOCYTPE html>
+<html lang="pt-BR">
+
+<style>
+    * {
+        font-family: Arial, sans-serif;
+    }
+
+    .cabecalho {
+        background-color: black;
+        color: aqua;
+        margin: 15px;
+        text-align: center;
+        border-radius: 15px;
+        padding: 15px;
+    }
+
+    .cabecalho a {
+        text-decoration: none;
+        color: white	;
+        margin: 10px;
+    }
+
+    .cabecalho a:hover {
+        color: aqua;
+    }
+
+    .conteudo {
+        margin: 50px;
+        padding: 10px;
+    }
+</style>
+<div class="cabecalho">
+    <h1>Redes de Computadores</h1>
+
+    <nav>
+        <a href="#redes">Redes de Computadores</a>
+        <a href="#topologias">Topologias de Rede</a>
+        <a href="#cabos">Tipos de Cabos</a>
+    </nav>
+</div>
+
+<!-- REDES -->
+<div class="conteudo" id="redes">
+    <h2>Redes de Computadores</h2>
+
+    <p>
+      As redes de computadores são formadas pela interligação de dois ou mais dispositivos computacionais por meio de um sistema de comunicação.
+      Esse sistema é baseado em um conjunto de regras e modelos que possibilitam o compartilhamento de informações, serviços e recursos entre dispositivos.
+      É comum que essa conexão seja feita através de cabos de rede, Wi-Fi (conexão sem fio) ou uma combinação de ambos.
+Dessa forma, assim como em uma empresa de entrega, precisamos ter postos de coleta e encaminhamento, veículos e pessoas em sua área de atuação para garantir o encaminhamento dos pacotes entre uma cidade no Norte do país e outra no Sul.
+
+Assim, nas redes de computadores, temos uma infraestrutura composta por elementos físicos de ligação (diferentes tipos de cabos de rede) e dispositivos eletrônicos dedicados ao encaminhamento das mensagens entre computadores (roteadores, switches, hubs) para definição das rotas de tráfego e realização da transmissão dos dados entre a origem e o destino.
+
+Componentes principais:
+Roteador: responsável por direcionar os dados.
+Switch: conecta dispositivos dentro de uma rede local.
+Servidor: fornece serviços para outros computadores.
+Placa de rede: permite que o dispositivo se conecte à rede.
+    <h3>Tipos de redes:</h3>
+    <ul>
+        <li><strong>LAN:</strong> rede local (ex: wifi(casa), cafeteria).</li>
+        <li><strong>MAN:</strong> rede metropolitana.</li>
+        <li><strong>WAN:</strong> rede de longa distância (ex: internet).</li>
+    </ul>
+</div>
+
+<!-- TOPOLOGIAS -->
+<div class="conteudo" id="topologias">
+    <h2>Topologias de Rede</h2>
+
+    <p>
+A topologia de rede é a forma como você organiza os elementos de uma rede de comunicação. A estrutura topológica pode ser representada física ou logicamente. No caso da topologia lógica, os dispositivos de comunicação são modelados como nós e as conexões entre os dispositivos são modeladas como links ou linhas entre os nós. Já a topologia física descreve a verdadeira aparência ou layout da rede. As distâncias entre nós, interconexões físicas, taxas de transmissão ou tipos de sinais podem diferir entre duas redes, mas suas topologias lógicas podem ser idênticas. Ao mapear graficamente esses links, temos como resultado algumas formas geométricas que podem ser usadas para descrever diferentes topologias. Existem prós e contras para cada uma delas, uma vez que diferem na maneira como os dispositivos podem (ou não) se interconectar.
+
+    <h3>1. Topologia em Barramento</h3>
+    <p>
+        Todos os dispositivos são conectados a um único cabo principal.
+        É simples e barata, porém pode causar lentidão se houver muitos dispositivos.
+    </p>
+
+    <h3>2. Topologia em Estrela</h3>
+    <p>
+        Todos os dispositivos são conectados a um equipamento central (switch ou hub).
+        É a mais utilizada atualmente por ser mais organizada e segura.
+    </p>
+
+    <h3>3. Topologia em Anel</h3>
+    <p>
+        Os dispositivos formam um círculo. Os dados circulam em um único sentido.
+    </p>
+
+    <h3>4. Topologia em Malha</h3>
+    <p>
+        Cada dispositivo é conectado a vários outros.
+        Oferece alta confiabilidade, mas possui custo elevado.
+    </p>
+
+    <h3>5. Topologia Híbrida</h3>
+    <p>
+        Combinação de duas ou mais topologias.
+        Muito usada em empresas de médio e grande porte.
+    </p>
+</div>
+
+<!-- CABOS -->
+<div class="conteudo" id="cabos">
+    <h2>Tipos de Cabos</h2>
+
+    <p>
+        Os cabos são meios físicos responsáveis pela transmissão dos dados
+        dentro de uma rede cabeada.
+    </p>
+
+    <h3>1. Cabo de Par Trançado</h3>
+    <p>
+        É o mais utilizado em redes locais. Possui fios trançados para reduzir interferências.
+        Pode ser do tipo UTP (sem blindagem) ou STP (com blindagem).
+    </p>
+
+    <h4>Categorias:</h4>
+    <ul>
+        <li>Cat5</li>
+        <li>Cat5e</li>
+        <li>Cat6</li>
+        <li>Cat6a</li>
+    </ul>
+
+    <h3>2. Cabo Coaxial</h3>
+    <p>
+        Possui um condutor central e uma malha metálica de proteção.
+        Foi muito utilizado em redes antigas e ainda é usado em TV a cabo.
+    </p>
+
+    <h3>3. Fibra Óptica</h3>
+    <p>
+        Utiliza sinais de luz para transmitir dados.
+        Permite altas velocidades e grandes distâncias,
+        sendo muito utilizada por provedores de internet.
+    </p>
+
+    <h4>Tipos de Fibra:</h4>
+    <ul>
+        <li><strong>Monomodo:</strong> maior alcance e alta velocidade.</li>
+        <li><strong>Multimodo:</strong> menor alcance, usada em redes internas.</li>
+    </ul>
+</div>
+ <div class="conteudo">
+<h2>Perguntas sobre Redes de computadores</h2>
+
+<form>
+
+    <!-- Pergunta 1 -->
+    <p><strong>1) O que é uma rede de computadores?</strong></p>
+    <input type="radio" name="q1"> Conjunto de dispositivos interligados para compartilhar informações<br>
+    <input type="radio" name="q1"> Um único computador conectado à internet<br>
+    <input type="radio" name="q1"> Apenas cabos conectados<br><br>
+
+    <!-- Pergunta 2 -->
+    <p><strong>2) Qual topologia utiliza um dispositivo central como switch?</strong></p>
+    <input type="radio" name="q2"> Barramento<br>
+    <input type="radio" name="q2"> Estrela<br>
+    <input type="radio" name="q2"> Anel<br><br>
+
+    <!-- Pergunta 3 -->
+    <p><strong>3) Qual é o cabo mais utilizado em redes locais (LAN)?</strong></p>
+    <input type="radio" name="q3"> Fibra óptica<br>
+    <input type="radio" name="q3"> Par trançado<br>
+    <input type="radio" name="q3"> Cabo coaxial<br><br>
+
+    <!-- Pergunta 4 -->
+    <p><strong>4) Qual topologia oferece maior confiabilidade, mas possui custo elevado?</strong></p>
+    <input type="radio" name="q4"> Malha<br>
+    <input type="radio" name="q4"> Barramento<br>
+    <input type="radio" name="q4"> Estrela<br><br>
+
+    <!-- Pergunta 5 -->
+    <p><strong>5) Qual tipo de fibra óptica possui maior alcance?</strong></p>
+    <input type="radio" name="q5"> Multimodo<br>
+    <input type="radio" name="q5"> Monomodo<br>
+    <input type="radio" name="q5"> Coaxial<br><br>
+
+    <input type="submit" value="Enviar Respostas">
+
+</form>
+
+
+<html>
