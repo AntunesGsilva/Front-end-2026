@@ -15,116 +15,113 @@ box-sizing:border-box;
 }
 
 body{
-font-family:Arial, Helvetica, sans-serif;
-background:#eef2f7;
+font-family:Segoe UI, Arial, sans-serif;
+background:#f0f4f8;
 color:#333;
 }
 
-#pagina{
+.container{
+width:90%;
 max-width:1100px;
 margin:auto;
 }
 
 header{
-background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+background:#2c3e50;
 color:white;
+padding:40px 0;
 text-align:center;
-padding:40px 20px;
 }
 
 header h1{
-font-size:32px;
 margin-bottom:10px;
+letter-spacing:1px;
 }
-
-/* MENU */
+  
 nav{
-background:#1b1b1b;
+background:#34495e;
 }
 
 nav ul{
 display:flex;
+justify-content:center;
 flex-wrap:wrap;
 list-style:none;
-justify-content:center;
-}
-
-nav li{
-margin:0;
 }
 
 nav a{
-display:block;
-padding:15px 20px;
 color:white;
 text-decoration:none;
-font-weight:bold;
+padding:12px 18px;
+display:block;
 }
 
 nav a:hover{
-background:#444;
+background:#2c3e50;
 }
-
-main{
-padding:30px 20px;
-}
-
+  
 section{
-margin-bottom:40px;
+margin:40px 0;
 }
 
 section h2{
-margin-bottom:20px;
-border-left:5px solid #2c5364;
-padding-left:10px;
+text-align:center;
+margin-bottom:25px;
+color:#2c3e50;
 }
-
-article{
+  
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+.card{
 background:white;
 padding:20px;
-margin-bottom:15px;
-border-radius:6px;
-box-shadow:0 2px 6px rgba(0,0,0,0.1);
+border-radius:8px;
+box-shadow:0 4px 10px rgba(0,0,0,0.08);
+transition:0.3s;
 }
 
-article h3{
-margin-bottom:8px;
-color:#1b1b1b;
+.card:hover{
+transform:translateY(-5px);
 }
-
+  
 blockquote{
 margin-top:10px;
-padding:10px;
-background:#f4f4f4;
-border-left:4px solid #2c5364;
+font-style:italic;
+color:#555;
 }
 
 ul{
-margin-left:20px;
+padding-left:20px;
 }
 
 table{
 width:100%;
 border-collapse:collapse;
+margin-top:20px;
 background:white;
-box-shadow:0 2px 6px rgba(0,0,0,0.1);
 }
 
 th,td{
 padding:10px;
 border:1px solid #ddd;
+text-align:center;
 }
 
 th{
-background:#2c5364;
+background:#34495e;
 color:white;
 }
 
 form{
 background:white;
 padding:20px;
-border-radius:6px;
-box-shadow:0 2px 6px rgba(0,0,0,0.1);
+border-radius:8px;
+box-shadow:0 4px 10px rgba(0,0,0,0.08);
+max-width:500px;
+margin:auto;
 }
 
 label{
@@ -135,28 +132,30 @@ margin-top:12px;
 input,select,textarea{
 width:100%;
 padding:8px;
-margin-top:4px;
+margin-top:5px;
 border:1px solid #ccc;
-border-radius:4px;
+border-radius:5px;
 }
 
-input[type="submit"]{
+button{
 margin-top:15px;
-background:#2c5364;
+padding:10px;
+width:100%;
+background:#34495e;
 color:white;
 border:none;
+border-radius:5px;
 cursor:pointer;
-font-weight:bold;
 }
 
-input[type="submit"]:hover{
-background:#1e3b4b;
+button:hover{
+background:#2c3e50;
 }
   
 footer{
-text-align:center;
-background:#1b1b1b;
+background:#2c3e50;
 color:white;
+text-align:center;
 padding:20px;
 margin-top:40px;
 }
@@ -166,11 +165,11 @@ margin-top:40px;
 
 <body>
 
-<div id="pagina">
-
 <header>
+<div class="container">
 <h1>Arquivo da Ciência da Computação</h1>
-<p>Histórias curiosas, bugs históricos e fatos da tecnologia</p>
+<p>Curiosidades históricas, bugs e fatos da tecnologia</p>
+</div>
 </header>
 
 <nav>
@@ -179,83 +178,90 @@ margin-top:40px;
 <li><a href="#bugs">Bugs</a></li>
 <li><a href="#internet">Internet</a></li>
 <li><a href="#linguagens">Linguagens</a></li>
-<li><a href="#curiosidades">Curiosidades</a></li>
 <li><a href="#formulario">Enviar</a></li>
 </ul>
 </nav>
 
-<main>
+<div class="container">
 
 <section id="pioneiros">
 
 <h2>Pioneiros da Computação</h2>
 
-<article>
+<div class="grid">
+
+<div class="card">
 <h3>Ada Lovelace</h3>
-<p>Considerada a primeira programadora da história.</p>
+<p>Primeira programadora da história.</p>
+<p>Escreveu algoritmos para a Máquina Analítica.</p>
+</div>
 
-<details>
-<summary>Ver mais</summary>
-<p>Ela escreveu um algoritmo para a Máquina Analítica de Charles Babbage.</p>
-</details>
-</article>
-
-<article>
+<div class="card">
 <h3>Alan Turing</h3>
-<p>Responsável pelo conceito de Máquina de Turing.</p>
-
+<p>Criador da Máquina de Turing.</p>
 <blockquote>
-"Podemos ver apenas um pouco do futuro, mas o suficiente para perceber que há muito a fazer."
+"Podemos ver apenas um pouco do futuro."
 </blockquote>
+</div>
 
-</article>
+</div>
 
 </section>
 
+
 <section id="bugs">
 
-<h2>Histórias de Bugs</h2>
+<h2>Bugs Históricos</h2>
 
-<article>
-<h3>O primeiro bug</h3>
+<div class="grid">
+
+<div class="card">
+<h3>Primeiro Bug</h3>
 <p>Uma mariposa encontrada no computador Mark II em 1947.</p>
-</article>
+</div>
 
-<article>
+<div class="card">
 <h3>Vírus Creeper</h3>
+<p>Primeiro vírus da história.</p>
 
 <pre>
 I'M THE CREEPER
 CATCH ME IF YOU CAN
 </pre>
 
-<p>Considerado o primeiro vírus da história.</p>
+</div>
 
-</article>
+</div>
 
 </section>
+
 
 <section id="internet">
 
 <h2>Curiosidades da Internet</h2>
 
-<article>
+<div class="grid">
+
+<div class="card">
 <h3>Primeiro Website</h3>
 <p>Criado em 1991 por Tim Berners-Lee.</p>
-</article>
+</div>
 
-<article>
+<div class="card">
 <h3>ARPANET</h3>
 
 <ul>
-<li>Primeira mensagem enviada: LO</li>
+<li>Primeira mensagem: LO</li>
 <li>Era para ser LOGIN</li>
-<li>O sistema caiu antes de completar</li>
+<li>Sistema caiu antes</li>
 </ul>
 
-</article>
+</div>
+
+</div>
 
 </section>
+
 
 <section id="linguagens">
 
@@ -263,14 +269,11 @@ CATCH ME IF YOU CAN
 
 <table>
 
-<thead>
 <tr>
 <th>Linguagem</th>
 <th>Ano</th>
 </tr>
-</thead>
 
-<tbody>
 <tr>
 <td>COBOL</td>
 <td>1959</td>
@@ -286,36 +289,14 @@ CATCH ME IF YOU CAN
 <td>1991</td>
 </tr>
 
-</tbody>
-
 </table>
 
 </section>
 
-<section id="curiosidades">
-
-<h2>Curiosidades</h2>
-
-<article>
-<h3>Spam</h3>
-<p>O termo veio de um esquete do grupo Monty Python.</p>
-</article>
-
-<article>
-<h3>Bluetooth</h3>
-<p>Nome inspirado no rei viking Harald Bluetooth.</p>
-</article>
-
-<article>
-<h3>Senha mais usada</h3>
-<p><strong>123456</strong></p>
-</article>
-
-</section>
 
 <section id="formulario">
 
-<h2>Envie uma curiosidade</h2>
+<h2>Envie uma Curiosidade</h2>
 
 <form>
 
@@ -330,28 +311,24 @@ CATCH ME IF YOU CAN
 <option>Pioneiros</option>
 <option>Bugs</option>
 <option>Internet</option>
-<option>Linguagens</option>
 </select>
 
 <label>Curiosidade</label>
 <textarea rows="4"></textarea>
 
-<input type="submit" value="Enviar">
+<button>Enviar</button>
 
 </form>
 
 </section>
 
-</main>
+</div>
 
 <footer>
 
 <p>© 2026 Arquivo da Computação</p>
-<p>contato@computacao.com</p>
 
 </footer>
-
-</div>
 
 </body>
 </html>
