@@ -1,2 +1,2 @@
 # Front-end-2026
-atividades feitas na faculdade disciplina Front-end
+Todas as atividades realizadas de Front-And-2026-ProfDácioMachado.
