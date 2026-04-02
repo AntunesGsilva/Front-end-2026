@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pet Virtual Fofinho</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+
+<style>
+    *{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  font-family:'Nunito',sans-serif;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+
+#bg{
+  position:fixed;
+  inset:0;
+  background: linear-gradient(180deg, #ffd6ec, #e0f7ff, #fff0f8);
+  z-index:0;
+}
+
+.decor::before, .decor::after{
+  content:"✨ 🌸 💕 ⭐";
+  position:absolute;
+  font-size:22px;
+  animation: floatBg 12s linear infinite;
+  opacity:0.6;
+}
+.decor::after{
+  top:60%;
+  left:20%;
+  animation-duration:18s;
+}
+@keyframes floatBg{
+  0%{transform:translateY(100vh)}
+  100%{transform:translateY(-10vh)}
+}
+
+.container{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center}
+
+.status-bar{
+  background:rgba(255,255,255,0.6);
+  border:2px solid rgba(255,182,193,0.5);
+  border-radius:25px;
+  padding:12px 28px;
+  display:flex;
+  gap:28px;
+  margin-bottom:14px;
+}
+
+.stat{display:flex;flex-direction:column;align-items:center}
+.stat-label{font-size:10px;font-weight:900;color:#ff8ecb}
+
+.stat-bar-wrap{
+  width:80px;
+  height:8px;
+  background:#fff;
+  border-radius:99px;
+  overflow:hidden;
+}
+
+.stat-bar{height:100%;border-radius:99px}
+.bar-fome{background:#ff8ecb}
+.bar-humor{background:#8ec6ff}
+
+.arena{width:300px;height:260px;display:flex;align-items:center;justify-content:center;position:relative}
+
+#b{
+  width:220px;
+  filter:drop-shadow(0 0 25px rgba(255,182,255,0.7));
+}
+
+.bubble{
+  position:absolute;
+  top:10px;
+  background:white;
+  padding:6px 12px;
+  border-radius:15px;
+  font-size:12px;
+  opacity:0;
+  transition:0.3s;
+}
+.bubble.show{opacity:1}
+
+.food-zone{margin-top:10px}
+
+#btn{
+  width:80px;
+  cursor:pointer;
+  filter:drop-shadow(0 6px 20px rgba(255,150,200,0.8));
+}
+</style>
+</head>
+
+<body>
+<div id="bg"></div>
+<div class="decor"></div>
+
+<div class="container">
+
+<div class="status-bar">
+  <div class="stat">
+    <span class="stat-label">Fome</span>
+    <div class="stat-bar-wrap">
+      <div class="stat-bar bar-fome" id="bar-fome"></div>
+    </div>
+    <span id="val-fome">100</span>
+  </div>
+
+  <div class="stat">
+    <span class="stat-label">Humor</span>
+    <div class="stat-bar-wrap">
+      <div class="stat-bar bar-humor" id="bar-humor"></div>
+    </div>
+    <span id="val-humor">100</span>
+  </div>
+</div>
+
+<div class="arena">
+  <img id="b" src="b_n.png">
+  <div class="bubble" id="bubble">Oi!</div>
+</div>
+
+<div class="food-zone">
+  <img id="btn" src="btn.png">
+</div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
