@@ -1,1 +1,121 @@
 
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grupos da Copa - Avaliação FrontEnd</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: Arial, sans-serif; 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+            min-height: 100vh; 
+            padding: 20px; 
+        }
+        .header { text-align: center; color: white; margin-bottom: 40px; }
+        .header h1 { font-size: 2.5em; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); margin-bottom: 10px; }
+        .container { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 30px; }
+        .grupo-card { 
+            background: white; border-radius: 20px; padding: 30px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); 
+            width: 100%; max-width: 500px; border: 3px solid transparent; transition: all 0.3s ease; 
+            display: flex; flex-direction: column; align-items: center; 
+        }
+        .grupo-card:hover { transform: translateY(-10px); box-shadow: 0 25px 50px rgba(0,0,0,0.2); border-color: #667eea; }
+        .grupo-titulo { color: #333; font-size: 2em; margin-bottom: 20px; text-align: center; }
+        .selecoes { list-style: none; margin-bottom: 25px; }
+        .selecoes li { 
+            background: linear-gradient(45deg, #f093fb 0%, #f5576c 100%); color: white; padding: 12px 20px; 
+            margin: 8px 0; border-radius: 25px; font-weight: bold; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
+        }
+        details { background: #f8f9fa; border-radius: 15px; padding: 20px; border-left: 5px solid #667eea; margin-top: 20px; }
+        summary { font-weight: bold; color: #667eea; cursor: pointer; font-size: 1.1em; }
+        .btn-proximo { 
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24); color: white; border: none; padding: 15px 40px; 
+            font-size: 1.2em; border-radius: 50px; cursor: pointer; box-shadow: 0 10px 25px rgba(0,0,0,0.2); 
+            transition: all 0.3s ease; margin-top: 30px; 
+        }
+        .btn-proximo:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(0,0,0,0.3); }
+        .hidden { display: none; }
+        @media (max-width: 768px) { .grupo-card { margin: 0 10px; padding: 20px; } .header h1 { font-size: 2em; } }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🏆 Grupos da Copa do Mundo</h1>
+        <p>Descubra as seleções de cada grupo</p>
+    </div>
+    <div class="container">
+        <div id="grupoA" class="grupo-card">
+            <h2 class="grupo-titulo">🅰️ Grupo A</h2>
+            <ul class="selecoes">
+                <li>México</li><li>África do Sul</li><li>Coreia do Sul</li><li>República Tcheca</li>
+            </ul>
+            <details><summary>Saiba Mais</summary>
+                <p>O jogo de abertura será México x África do Sul. Confrontos entre Coreia do Sul e seleções europeias já ocorreram em várias Copas, com histórico equilibrado.</p>
+            </details>
+        </div>
+        <div id="grupoB" class="grupo-card">
+            <h2 class="grupo-titulo">🅱️ Grupo B</h2>
+            <ul class="selecoes">
+                <li>Canadá</li><li>Suíça</li><li>Catar</li><li>Vaga Europeia (Bósnia)</li>
+            </ul>
+            <details><summary>Saiba Mais</summary>
+                <p>O Canadá joga em casa, fator importante de desempenho. Catar e Suíça já se enfrentaram recentemente em amistosos internacionais.</p>
+            </details>
+        </div>
+        <div id="grupoC" class="grupo-card">
+            <h2 class="grupo-titulo">🅲 Grupo C</h2>
+            <ul class="selecoes">
+                <li>Brasil</li><li>Marrocos</li><li>Haiti</li><li>Escócia</li>
+            </ul>
+            <details><summary>Saiba Mais</summary>
+                <p>Brasil, Marrocos e Escócia já dividiram grupo em 1998. Brasil nunca perdeu para a Escócia em Copas.</p>
+            </details>
+        </div>
+        <div id="grupoD" class="grupo-card hidden">
+            <h2 class="grupo-titulo">🅳 Grupo D</h2>
+            <ul class="selecoes">
+                <li>Estados Unidos</li><li>Paraguai</li><li>Austrália</li><li>Turquia</li>
+            </ul>
+            <details><summary>Saiba Mais</summary>
+                <p>Os EUA jogam em casa, vantagem histórica em Copas. Austrália enfrenta frequentemente seleções sul-americanas em torneios.</p>
+            </details>
+        </div>
+        <div id="grupoE" class="grupo-card hidden">
+            <h2 class="grupo-titulo">🅴 Grupo E</h2>
+            <ul class="selecoes">
+                <li>Alemanha</li><li>Equador</li><li>Costa do Marfim</li><li>Curaçao</li>
+            </ul>
+            <details><summary>Saiba Mais</summary>
+                <p>Alemanha costuma dominar fases de grupos. Equador e Costa do Marfim têm estilos físicos semelhantes.</p>
+            </details>
+        </div>
+        <div id="grupoF" class="grupo-card hidden">
+            <h2 class="grupo-titulo">🅵 Grupo F</h2>
+            <ul class="selecoes">
+                <li>Holanda</li><li>Japão</li><li>Tunísia</li><li>Suécia</li>
+            </ul>
+            <details><summary>Saiba Mais</summary>
+                <p>Holanda tem tradição de futebol total. Japão surpreende com disciplina tática.</p>
+            </details>
+        </div>
+        <button id="btnProximo" class="btn-proximo" onclick="alternarGrupos()">Próximo</button>
+    </div>
+    <script>
+        let estado = 0;
+        function alternarGrupos() {
+            const g1 = ['grupoA','grupoB','grupoC'], g2 = ['grupoD','grupoE','grupoF'];
+            if (estado === 0) {
+                g1.forEach(id => document.getElementById(id).classList.add('hidden'));
+                g2.forEach(id => document.getElementById(id).classList.remove('hidden'));
+                document.getElementById('btnProximo').textContent = 'Voltar'; estado = 1;
+            } else {
+                g2.forEach(id => document.getElementById(id).classList.add('hidden'));
+                g1.forEach(id => document.getElementById(id).classList.remove('hidden'));
+                document.getElementById('btnProximo').textContent = 'Próximo'; estado = 0;
+            }
+        }
+    </script>
+</body>
+</html> 
