@@ -1,1 +1,38 @@
 
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Conversor °C - °F</title>
+    <style>
+        body { font-family: Arial; text-align: center; padding: 50px; background: #f0f0f0; }
+        input { font-size: 24px; padding: 15px; width: 150px; margin: 10px; border: 2px solid #ddd; border-radius: 8px; }
+        input:focus { border-color: #4CAF50; outline: none; }
+        .label { font-size: 20px; font-weight: bold; color: #333; }
+        h1 { color: #4CAF50; margin-bottom: 30px; }
+    </style>
+</head>
+<body>
+    <h1>Conversor de Temperatura</h1>
+    
+    <div class="label">°Celsius</div>
+    <input id="celsius" type="number" step="0.1" placeholder="0.0" oninput="converter('celsius')">
+    
+    <div style="font-size: 30px; margin: 20px 0; color: #666;">↔</div>
+    
+    <div class="label">°Fahrenheit</div>
+    <input id="fahrenheit" type="number" step="0.1" placeholder="32.0" oninput="converter('fahrenheit')">
+    
+    <script>
+        function converter(campo) {
+            const c = parseFloat(document.getElementById('celsius').value) || 0;
+            const f = parseFloat(document.getElementById('fahrenheit').value) || 0;
+            
+            if (campo === 'celsius') {
+                document.getElementById('fahrenheit').value = (c * 9/5 + 32).toFixed(2);
+            } else {
+                document.getElementById('celsius').value = ((f - 32) * 5/9).toFixed(2);
+            }
+        }
+    </script>
+</body>
+</html>
