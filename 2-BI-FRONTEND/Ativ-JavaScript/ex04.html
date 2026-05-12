@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Infinity Bank - Simulador</title>
+    <style>
+        body { 
+            font-family: Arial; 
+            max-width: 550px; 
+            margin: 50px auto; 
+            padding: 20px; 
+            background: #f8f9fa;
+        }
+        .container { 
+            background: white; 
+            padding: 25px; 
+            border-radius: 10px; 
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        h1 { 
+            color: #1a365d; 
+            margin-bottom: 20px;
+        }
+        .input-group { margin: 15px 0; }
+        label { 
+            display: block; 
+            margin-bottom: 5px; 
+            font-weight: bold; 
+            color: #555;
+        }
+        input, select { 
+            width: 100%; 
+            padding: 10px; 
+            font-size: 16px; 
+            border: 2px solid #ddd; 
+            border-radius: 5px; 
+        }
+        input:focus, select:focus { 
+            border-color: #3182ce; 
+            outline: none;
+        }
+        button { 
+            background: #3182ce; 
+            color: white; 
+            border: none; 
+            padding: 12px 25px; 
+            font-size: 16px; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            margin-top: 15px;
+            width: 100%;
+        }
+        button:hover { background: #2b6cb0; }
+        .resultado { 
+            margin-top: 20px; 
+            padding: 20px; 
+            border-radius: 8px; 
+            background: #e6f3ff;
+            border-left: 4px solid #3182ce;
+            text-align: left;
+        }
+        .valor { 
+            font-size: 18px; 
+            font-weight: bold; 
+            margin: 8px 0;
+            color: #2c5282; 
+        }
+        .oculto { display: none; }
+    </style>
+</head>
+<body>
+    <!-- MESMO HTML E JS DE ANTES -->
+    <div class="container">
+        <h1>🏦 Infinity Bank - Simulador</h1>
+        
+        <div class="input-group">
+            <label>Bandeira:</label>
+            <select id="bandeira">
+                <option value="">Selecione...</option>
+                <option value="visa">Visa (2%)</option>
+                <option value="master">Mastercard (1.85%)</option>
+                <option value="elo">Elo (3%)</option>
+            </select>
+        </div>
+        
+        <div class="input-group">
+            <label>Valor da Venda (R$):</label>
+            <input type="number" id="valor" step="0.01" min="0" placeholder="1000.00">
+        </div>
+        
+        <div class="input-group">
+            <label>Parcelas:</label>
+            <select id="parcelas">
+                <option value="1">1 (À vista)</option>
+                <option value="3">3</option>
+                <option value="6">6</option>
+                <option value="12">12</option>
+            </select>
+        </div>
+        
+        <button onclick="simular()">Simular Taxas</button>
+        
+        <div id="resultado" class="resultado oculto">
+            <div><strong id="resumo"></strong></div>
+            <div class="valor">Taxa Bandeira: <span id="taxaBandeira">R$ 0,00</span></div>
+            <div class="valor">Juros (1.5%/mês): <span id="juros">R$ 0,00</span></div>
+            <div class="valor">Taxa Mensal (R$12,50): <span id="taxaMensal">R$ 0,00</span></div>
+            <hr>
+            <div class="valor">Total: <span id="total">R$ 0,00</span></div>
+            <div class="valor">Parcela: <span id="parcela">R$ 0,00</span></div>
+        </div>
+    </div>
+
+    <!-- MESMO JAVASCRIPT -->
+    <script>
+        function simular() {
+            const bandeira = document.getElementById('bandeira').value;
+            const valor = Number(document.getElementById('valor').value) || 0;
+            const parcelas = Number(document.getElementById('parcelas').value) || 1;
+            
+            if (!bandeira || valor <= 0) {
+                alert('Selecione bandeira e informe valor válido!');
+                return;
+            }
+            
+            let taxaBandeira = 0;
+            switch(bandeira) {
+                case 'visa': taxaBandeira = 0.02; break;
+                case 'master': taxaBandeira = 0.0185; break;
+                case 'elo': taxaBandeira = 0.03; break;
+            }
+            
+            const valorTaxaBandeira = valor * taxaBandeira;
+            const juros = valor * 0.015 * parcelas;
+            const taxaMensal = 12.50 * parcelas;
+            const total = valor + valorTaxaBandeira + juros + taxaMensal;
+            const valorParcela = (total / parcelas).toFixed(2);
+            
+            document.getElementById('taxaBandeira').textContent = `R$ ${valorTaxaBandeira.toFixed(2)}`;
+            document.getElementById('juros').textContent = `R$ ${juros.toFixed(2)}`;
+            document.getElementById('taxaMensal').textContent = `R$ ${taxaMensal.toFixed(2)}`;
+            document.getElementById('total').textContent = `R$ ${total.toFixed(2)}`;
+            document.getElementById('parcela').textContent = `R$ ${valorParcela}`;
+            
+            document.getElementById('resumo').textContent = 
+                `${bandeira.toUpperCase()} | ${parcelas}x | R$ ${valor.toFixed(2)}`;
+            
+            document.getElementById('resultado').classList.remove('oculto');
+        }
+    </script>
+</body>
+</html>
