@@ -1,25 +1,30 @@
-function validarCPF(cpf) {
-    cpf = cpf.replace(/\D/g, '');
-    
-    if (cpf.length !== 11 || /^(\d)\1{10}$/.test(cpf)) {
-        return false;
-    }
-    
-    let soma = 0;
-    for (let i = 0; i < 9; i++) {
-        soma += parseInt(cpf[i]) * (10 - i);
-    }
-    let resto = (soma * 10) % 11;
-    if (resto === 10 || resto === 11) resto = 0;
-    if (resto !== parseInt(cpf[9])) return false;
-    
-    soma = 0;
-    for (let i = 0; i < 10; i++) {
-        soma += parseInt(cpf[i]) * (11 - i);
-    }
-    resto = (soma * 10) % 11;
-    if (resto === 10 || resto === 11) resto = 0;
-    if (resto !== parseInt(cpf[10])) return false;
-    
-    return true;
-}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CPF Simples</title>
+    <style>
+        .valido { color: green; font-weight: bold; }
+        .invalido { color: red; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <input type="text" id="cpf" placeholder="000.000.000-00">
+    <button onclick="testar()">Validar</button>
+    <div id="resultado"></div>
+
+    <script>
+        function testar() {
+            const cpf = document.getElementById('cpf').value;
+            const resultado = document.getElementById('resultado');
+            
+            if (validarCPF(cpf)) {
+                resultado.innerHTML = '✅ VÁLIDO';
+                resultado.className = 'valido';
+            } else {
+                resultado.innerHTML = '❌ INVÁLIDO';
+                resultado.className = 'invalido';
+            }
+        }
+    </script>
+</body>
+</html>
