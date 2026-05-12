@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Média Escolar</title>
+    <style>
+        body { 
+            font-family: Arial; 
+            max-width: 500px; 
+            margin: 50px auto; 
+            padding: 30px; 
+            background: #f5f5f5;
+        }
+        .container { 
+            background: white; 
+            padding: 30px; 
+            border-radius: 15px; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        h1 { 
+            color: #2c3e50; 
+            margin-bottom: 25px;
+        }
+        input { 
+            width: 80px; 
+            padding: 12px; 
+            margin: 5px; 
+            font-size: 16px; 
+            border: 2px solid #ddd; 
+            border-radius: 6px; 
+            text-align: center;
+        }
+        input:focus { 
+            border-color: #3498db; 
+            outline: none;
+        }
+        .nome { width: 250px; }
+        button { 
+            background: #3498db; 
+            color: white; 
+            border: none; 
+            padding: 15px 30px; 
+            font-size: 16px; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            margin-top: 20px;
+        }
+        button:hover { background: #2980b9; }
+        .resultado { 
+            margin-top: 25px; 
+            padding: 20px; 
+            border-radius: 10px; 
+            font-size: 18px; 
+            font-weight: bold;
+        }
+        .aprovado { background: #d4edda; color: #155724; border: 2px solid #c3e6cb; }
+        .exame { background: #fff3cd; color: #856404; border: 2px solid #ffeaa7; }
+        .reprovado { background: #f8d7da; color: #721c24; border: 2px solid #f5c6cb; }
+        .oculto { display: none; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Calculadora de Média</h1>
+        
+        <div>
+            <input type="text" class="nome" id="nome" placeholder="Nome do aluno">
+        </div>
+        
+        <div>
+            <input type="number" id="nota1" step="0.1" min="0" max="10" placeholder="N1">
+            <input type="number" id="nota2" step="0.1" min="0" max="10" placeholder="N2">
+            <input type="number" id="nota3" step="0.1" min="0" max="10" placeholder="N3">
+        </div>
+        
+        <button onclick="calcularMedia()">Calcular Média</button>
+        
+        <div id="resultado" class="resultado oculto"></div>
+    </div>
+
+    <script>
+        function calcularMedia() {
+            const nome = document.getElementById('nome').value || 'Aluno';
+            const n1 = Number(document.getElementById('nota1').value) || 0;
+            const n2 = Number(document.getElementById('nota2').value) || 0;
+            const n3 = Number(document.getElementById('nota3').value) || 0;
+            
+            const media = ((n1 + n2 + n3) / 3).toFixed(2);
+            const resultado = document.getElementById('resultado');
+            
+            let situacao, classe, mensagem;
+            
+            if (media >= 7.0) {
+                situacao = 'APROVADO';
+                classe = 'aprovado';
+                mensagem = `${nome}, você foi <strong>APROVADO</strong> com média ${media}!`;
+            } else if (media >= 4.0) {
+                const falta = (10 - media).toFixed(2);
+                situacao = 'EXAME 📝';
+                classe = 'exame';
+                mensagem = `${nome}, você está de <strong>EXAME</strong> (${media}). Falta ${falta} para 10!`;
+            } else {
+                situacao = 'REPROVADO';
+                classe = 'reprovado';
+                mensagem = `${nome}, você foi <strong>REPROVADO</strong> com média ${media}. Estude mais!`;
+            }
+            
+            resultado.innerHTML = `
+                <div><strong>${situacao}</strong></div>
+                <div>Média: <strong>${media}</strong></div>
+                <div>${mensagem}</div>
+            `;
+            
+            resultado.className = `resultado ${classe}`;
+            resultado.classList.remove('oculto');
+        }
+    </script>
+</body>
+</html>
