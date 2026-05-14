@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Validador de Cartão</title>
+    <style>
+        body { font-family: Arial; max-width: 400px; margin: 50px auto; padding: 20px; }
+        input { width: 100%; padding: 12px; margin: 10px 0; font-size: 18px; }
+        button { width: 100%; padding: 12px; background: #28a745; color: white; border: none; cursor: pointer; }
+        #result { margin-top: 20px; padding: 15px; border-radius: 5px; display: none; }
+        .valid { background: #d4edda; color: #155724; }
+        .invalid { background: #f8d7da; color: #721c24; }
+        .info { margin: 10px 0; font-size: 16px; }
+    </style>
+</head>
+<body>
+    <h2>🔒 Validador de Cartão</h2>
+    
+    <input type="text" id="cartao" placeholder="Digite o número do cartão (ex: 4532015112830366)" maxlength="19">
+    <button onclick="analisar()">Analisar Cartão</button>
+    
+    <div id="result">
+        <div class="info"><strong>Status:</strong> <span id="status">-</span></div>
+        <div class="info"><strong>Bandeira:</strong> <span id="bandeira">-</span></div>
+        <div class="info"><strong>Banco:</strong> <span id="banco">-</span></div>
+        <div class="info"><strong>Setor:</strong> <span id="setor">-</span></div>
+    </div>
+
+    <script>
+        function analisar() {
+            let numero = document.getElementById('cartao').value.replace(/\D/g, '');
+            
+            if (numero.length < 13 || numero.length > 16) {
+                alert('Cartão deve ter 13-16 dígitos!');
+                return;
+            }
+            
+            let valido = luhnValido(numero);
+            let bandeira = getBandeira(numero);
+            let banco = getBanco(numero);
+            let setor = getSetor(numero[0]);
+            
+            document.getElementById('status').textContent = valido ? '✅ VÁLIDO' : '❌ INVÁLIDO';
+            document.getElementById('bandeira').textContent = bandeira;
+            document.getElementById('banco').textContent = banco;
+            document.getElementById('setor').textContent = setor;
+            
+            let result = document.getElementById('result');
+            result.className = valido ? 'valid' : 'invalid';
+            result.style.display = 'block';
+        }
+        
+        function luhnValido(numero) {
+            let soma = 0;
+            let par = false;
+            
+            for (let i = numero.length - 1; i >= 0; i--) {
+                let digito = parseInt(numero[i]);
+                if (par) {
+                    digito *= 2;
+                    if (digito > 9) digito -= 9;
+                }
+                soma += digito;
+                par = !par;
+            }
+            return soma % 10 === 0;
+        }
+        
+        function getBandeira(numero) {
+            let ini = numero.substring(0, 6);
+            if (ini.startsWith('4')) return 'Visa';
+            if (ini.startsWith('5') || ini.startsWith('2')) return 'Mastercard';
+            if (ini.startsWith('34') || ini.startsWith('37')) return 'Amex';
+            if (ini.startsWith('6011')) return 'Discover';
+            return 'Desconhecida';
+        }
+        
+        function getBanco(numero) {
+            let ini = numero.substring(0, 6);
+            if (ini.startsWith('4532')) return 'Itaú';
+            if (ini.startsWith('4539')) return 'Bradesco';
+            if (ini.startsWith('4004')) return 'Santander';
+            if (ini.startsWith('341')) return 'Amex';
+            return 'Vários bancos';
+        }
+        
+        function getSetor(digito) {
+            if (digito == 4) return 'Bancos';
+            if (digito == 5) return 'Comércio';
+            return 'Financeiro';
+        }
+    </script>
+</body>
+</html>
