@@ -1,0 +1,219 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Infinity Bank - Lista de Convidados VIP</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: sans-serif;
+      background: #f0f2f5;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+      padding: 2rem;
+      width: 100%;
+      max-width: 480px;
+    }
+
+    .card-title {
+      font-size: 20px;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 4px;
+    }
+
+    .card-sub {
+      font-size: 13px;
+      color: #888;
+      margin-bottom: 1.5rem;
+    }
+
+    .input-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 1.25rem;
+    }
+
+    .input-row input {
+      flex: 1;
+      padding: 8px 12px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .input-row input:focus {
+      border-color: #888;
+    }
+
+    .btn-add {
+      padding: 8px 16px;
+      background: #1a1a1a;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+
+    .btn-add:hover {
+      background: #333;
+    }
+
+    #guest-list {
+      list-style: none;
+    }
+
+    .guest-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 0;
+      border-top: 1px solid #f0f0f0;
+    }
+
+    .guest-name {
+      flex: 1;
+      font-size: 15px;
+      color: #1a1a1a;
+      transition: all 0.2s;
+    }
+
+    .guest-name.done {
+      text-decoration: line-through;
+      color: #bbb;
+    }
+
+    .btn-sm {
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: 1px solid #ddd;
+      background: transparent;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .btn-sm:hover {
+      background: #f5f5f5;
+    }
+
+    .btn-done {
+      color: #2e7d32;
+      border-color: #a5d6a7;
+    }
+
+    .btn-edit {
+      color: #555;
+    }
+
+    .btn-del {
+      color: #c62828;
+      border-color: #ef9a9a;
+    }
+
+    .empty {
+      font-size: 13px;
+      color: #bbb;
+      text-align: center;
+      padding: 1rem 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1 class="card-title">⭐ Infinity Bank</h1>
+    <p class="card-sub">Lista de Convidados VIP — Evento de Inauguração</p>
+
+    <div class="input-row">
+      <input type="text" id="guest-input" placeholder="Nome do convidado..." maxlength="60" />
+      <button class="btn-add" onclick="addGuest()">+ Adicionar</button>
+    </div>
+
+    <ul id="guest-list">
+      <li class="empty" id="empty-msg">Nenhum convidado adicionado ainda.</li>
+    </ul>
+  </div>
+
+  <script>
+    const input = document.getElementById('guest-input');
+    const list = document.getElementById('guest-list');
+    const emptyMsg = document.getElementById('empty-msg');
+
+    input.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') addGuest();
+    });
+
+    function updateEmpty() {
+      const items = list.querySelectorAll('.guest-item');
+      emptyMsg.style.display = items.length ? 'none' : 'block';
+    }
+
+    function addGuest() {
+      const name = input.value.trim();
+      if (!name) return;
+
+      const li = document.createElement('li');
+      li.className = 'guest-item';
+      li.innerHTML = `
+        <span class="guest-name">${escapeHTML(name)}</span>
+        <button class="btn-sm btn-done" onclick="toggleDone(this)">Concluir</button>
+        <button class="btn-sm btn-edit" onclick="editGuest(this)">Editar</button>
+        <button class="btn-sm btn-del" onclick="deleteGuest(this)">Excluir</button>
+      `;
+
+      list.appendChild(li);
+      input.value = '';
+      input.focus();
+      updateEmpty();
+    }
+
+    function toggleDone(btn) {
+      const nameEl = btn.closest('.guest-item').querySelector('.guest-name');
+      nameEl.classList.toggle('done');
+    }
+
+    function editGuest(btn) {
+      const nameEl = btn.closest('.guest-item').querySelector('.guest-name');
+      const novo = prompt('Editar nome do convidado:', nameEl.textContent);
+      if (novo && novo.trim()) {
+        nameEl.textContent = novo.trim();
+      }
+    }
+
+    function deleteGuest(btn) {
+      btn.closest('.guest-item').remove();
+      updateEmpty();
+    }
+
+    function escapeHTML(str) {
+      return str
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+    }
+  </script>
+
+</body>
+</html>
