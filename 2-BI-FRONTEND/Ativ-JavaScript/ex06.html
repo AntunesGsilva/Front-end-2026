@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Orçamento Festa</title>
+    <style>
+        body { font-family: Arial; max-width: 400px; margin: 50px auto; padding: 20px; }
+        input, select, button { width: 100%; padding: 10px; margin: 10px 0; }
+        button { background: #007bff; color: white; border: none; cursor: pointer; }
+        #result { margin-top: 20px; padding: 15px; background: #f0f0f0; }
+        .item { display: flex; justify-content: space-between; margin: 5px 0; }
+    </style>
+</head>
+<body>
+    <h2>🎉 Orçamento Festa</h2>
+    
+    <select id="pacote">
+        <option value="50">Standard R$50</option>
+        <option value="80">Premium R$80</option>
+        <option value="120">Deluxe R$120</option>
+    </select>
+    
+    <input type="number" id="pessoas" placeholder="Pessoas">
+    <button onclick="calcular()">Calcular</button>
+    
+    <div id="result" style="display:none;">
+        <div class="item">Bruto: <span id="bruto">-</span></div>
+        <div class="item">Taxa 10%: <span id="taxa">-</span></div>
+        <div class="item">Desconto: <span id="desc">-</span></div>
+        <hr>
+        <div class="item"><b>Total:</b> <span id="total">-</span></div>
+    </div>
+
+    <script>
+        function calcular() {
+            let pkg = +document.getElementById('pacote').value;
+            let ppl = +document.getElementById('pessoas').value;
+            
+            if (!ppl) return alert('Digite pessoas!');
+            
+            let bruto = pkg * ppl;
+            let taxa = bruto * 0.1;
+            let sub = bruto + taxa;
+            let desc = ppl > 100 ? sub * 0.05 : 0;
+            let total = sub - desc;
+            
+            document.getElementById('bruto').textContent = 'R$ ' + bruto.toFixed(2);
+            document.getElementById('taxa').textContent = 'R$ ' + taxa.toFixed(2);
+            document.getElementById('desc').textContent = 'R$ ' + desc.toFixed(2);
+            document.getElementById('total').textContent = 'R$ ' + total.toFixed(2);
+            
+            document.getElementById('result').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
