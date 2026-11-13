@@ -1,0 +1,55 @@
+# ==========================================
+# Node.js / React / Frontend Build
+# ==========================================
+node_modules/
+dist/
+build/
+coverage/
+*.log
+.env
+.env.*
+!.env.example
+
+# ==========================================
+# Java / Backend (Maven, Gradle & Compilação)
+# ==========================================
+target/
+bin/
+out/
+*.class
+*.jar
+!backend/lib/*.jar
+*.war
+*.ear
+*.tsbuildinfo
+.gradle/
+
+# ==========================================
+# Bancos de Dados Locais & Arquivos Compactados
+# ==========================================
+*.db
+*.sqlite
+*.sqlite3
+*.tar.gz
+*.zip
+bun.lock
+
+# ==========================================
+# IDEs, Editores e Sistema Operacional
+# ==========================================
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+.aistudio/
+
+# ==========================================
+# Python & Scripts Utilitários
+# ==========================================
+*.pyc
+__pycache__/
